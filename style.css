@@ -1,0 +1,438 @@
+/* ...existing code... */
+:root {
+  --brand: #4169E1;
+  --brand-600: #355fd1;
+  --brand-dark: #0B3D91;
+  --bg: #f7fbff;
+  --surface: #ffffff;
+  --muted: #f1f5ff;
+  --text: #0b2540;
+  --muted-text: #6b7a90;
+  --border: #e6eefc;
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(11, 61, 145, 0.08);
+  --glass: rgba(255,255,255,0.6);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.45;
+  color: var(--text);
+  background: linear-gradient(180deg, #f7fbff 0%, #ffffff 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Page wrapper */
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 22px;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.6));
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 18px rgba(11,61,145,0.03);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+.site-header h1 {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--brand-dark);
+}
+
+/* Top controls */
+.top-toggle {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--brand-dark);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+.top-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+.top-toggle[aria-pressed="true"] {
+  background: linear-gradient(90deg, var(--brand), var(--brand-600));
+  color: #fff;
+  border-color: rgba(0,0,0,0.04);
+}
+
+/* Panels / cards */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+/* Headings */
+h2 {
+  font-size: 16px;
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+}
+
+/* Grid / layout */
+.grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stat {
+  flex: 1 1 220px;
+  background: linear-gradient(180deg, var(--muted), var(--surface));
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  color: var(--brand-dark);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Forms + inputs */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+  margin-bottom: 10px;
+}
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 8px 30px rgba(65,105,225,0.09);
+  border-color: var(--brand);
+}
+label { color: var(--muted-text); font-size: 13px; display:block; margin-bottom:6px; }
+
+/* Buttons */
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(90deg, var(--brand), var(--brand-600));
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(65,105,225,0.12);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+button:hover { transform: translateY(-2px); }
+button.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--brand-dark);
+  box-shadow: none;
+}
+
+/* Lists / cards */
+.list { display: block; gap: 8px; }
+.card {
+  background: var(--muted);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  color: var(--brand-dark);
+}
+
+/* Utility */
+.hidden { display: none !important; }
+
+/* Contact floating card */
+.contact-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 80;
+  transition: transform 220ms ease, opacity 220ms ease;
+  transform-origin: bottom right;
+  will-change: transform, opacity;
+}
+.contact-float.hidden {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  pointer-events: none;
+}
+.contact-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.9));
+  border-radius: 14px;
+  padding: 14px 16px;
+  min-width: 220px;
+  box-shadow: 0 12px 40px rgba(11,61,145,0.12);
+  border: 1px solid var(--border);
+}
+.contact-card h3 { margin-bottom: 8px; font-size: 15px; color: var(--brand-dark); }
+.contact-row { font-size: 14px; color: var(--muted-text); margin-bottom:6px; }
+.contact-row a { color: var(--brand); text-decoration: none; }
+
+/* Small components */
+.form-actions { display:flex; gap:8px; align-items:center; margin-top:8px; }
+.goal-item { margin-top:8px; }
+
+/* Footer */
+.site-footer {
+  margin-top: 24px;
+  padding: 18px 0;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+/* Light & Dark mode */
+body.dark-mode {
+  --bg: #091226;
+  --surface: #07101a;
+  --muted: #081428;
+  --text: #e6eefc;
+  --muted-text: #9fb0d6;
+  --border: rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, #07101a 0%, #081428 100%);
+}
+body.dark-mode .panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+body.dark-mode .top-toggle[aria-pressed="true"] {
+  background: linear-gradient(90deg, #4b6ef8, #355fd1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .site-header .container { padding: 8px 12px; }
+  .stat { flex: 1 1 190px; }
+}
+@media (max-width: 700px) {
+  .container { padding: 12px; }
+  .grid { flex-direction: column; gap: 12px; }
+  .site-header h1 { font-size: 18px; }
+  .contact-float { right: 12px; left: 12px; bottom: 12px; transform-origin: center; }
+}
+
+/* Switch Theme button */
+.theme-switch-button {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+
+/* Theme switch (pills + knob). Add class="theme-switch-button" to the #theme-toggle button for best results. */
+#theme-toggle.theme-switch-button,
+#theme-toggle.theme-switch-button.top-toggle,
+#theme-toggle.theme-switch-button.top-toggle[aria-pressed] {
+  width: 56px;
+  height: 30px;
+  padding: 0;
+  border-radius: 999px;
+  background: rgba(11,61,145,0.06);
+  border: 1px solid var(--border);
+  position: relative;
+  box-shadow: 0 6px 14px rgba(11,61,145,0.04);
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  color: transparent; /* hide text visually — accessible label kept via aria-label */
+}
+
+/* knob */
+#theme-toggle.theme-switch-button::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(11,61,145,0.12);
+  transition: transform 200ms cubic-bezier(.2,.9,.2,1), background 200ms ease;
+}
+
+/* pressed state (dark mode enabled) */
+#theme-toggle.theme-switch-button[aria-pressed="true"] {
+  background: linear-gradient(90deg, var(--brand), var(--brand-600));
+  border-color: rgba(0,0,0,0.06);
+  box-shadow: 0 8px 20px rgba(53,95,209,0.18);
+}
+#theme-toggle.theme-switch-button[aria-pressed="true"]::before {
+  transform: translateX(26px);
+  background: #fff;
+}
+
+/* Make switch reflect body.dark-mode too (in case JS sets class directly) */
+body.dark-mode #theme-toggle.theme-switch-button {
+  background: linear-gradient(90deg, var(--brand), var(--brand-600));
+  border-color: rgba(0,0,0,0.06);
+}
+body.dark-mode #theme-toggle.theme-switch-button::before {
+  transform: translateX(26px);
+}
+
+/* Small-screen tweak */
+@media (max-width:700px) {
+  #theme-toggle.theme-switch-button { width:48px; height:26px; }
+  #theme-toggle.theme-switch-button::before { width:20px; height:20px; top:3px; left:3px; }
+  #theme-toggle.theme-switch-button[aria-pressed="true"]::before { transform: translateX(22px); }
+}
+
+/* Mini calendar (left side in the middle) */
+.mini-calendar {
+  width: 240px;
+  padding: 12px;
+  position: fixed;
+  left: 20px;
+  top: 140px; /* moved lower (was 84px) */
+  z-index: 30;
+  box-shadow: 0 10px 30px rgba(11,61,145,0.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* optionally center vertically on very tall screens */
+@media (min-height: 1000px) {
+  .mini-calendar {
+    top: calc(50vh - 220px); /* adjust value to taste */
+  }
+}
+
+/* keep small-screen behavior unchanged */
+@media (max-width: 979px) {
+  .mini-calendar { position: relative; width: 100%; top: 0; left: 0; margin-bottom: 12px; }
+  main.container { margin-left: 0; }
+}
+
+/* Calendar header */
+.mini-calendar .calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+.mini-calendar .cal-title {
+  font-size: 14px;
+  color: var(--brand-dark);
+  font-weight: 700;
+}
+.mini-calendar .cal-nav {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--brand-dark);
+}
+
+/* grid / rows */
+.mini-calendar .calendar-grid { display: grid; gap: 6px; }
+
+/* calendar rows: 7 columns, consistent row height so numbers always fit */
+.mini-calendar .calendar-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  align-items: stretch;
+  grid-auto-rows: 44px; /* fixed row height; adjust if you want larger/smaller cells */
+}
+
+/* weekday header */
+.mini-calendar .calendar-weekdays .weekday {
+  padding: 6px 0;
+  font-size: 11px;
+  text-align: center;
+  color: var(--muted-text);
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+/* day cells: ensure content centers and never overflows the box */
+.mini-calendar .calendar-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  font-size: clamp(12px, 1.6vw, 14px);
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+}
+
+
+.mini-calendar .calendar-cell.other-month {
+  opacity: 0.45;
+  background: transparent;
+  border-color: transparent;
+}
+
+.mini-calendar .calendar-cell.today {
+  box-shadow: 0 6px 18px rgba(65,105,225,0.08);
+  border: 1px solid var(--brand);
+  background: linear-gradient(180deg, rgba(65,105,225,0.06), rgba(255,255,255,0.02));
+  color: var(--brand-dark);
+}
+.mini-calendar .calendar-cell.selected {
+  background: linear-gradient(90deg, var(--brand), var(--brand-600));
+  color: #fff;
+  border-color: rgba(0,0,0,0.06);
+}
+
+
+@media (max-width: 700px) {
+  .mini-calendar .calendar-row { grid-auto-rows: 38px; }
+  .mini-calendar .calendar-cell { font-size: clamp(11px, 2.2vw, 13px); }
+}
+
+
+

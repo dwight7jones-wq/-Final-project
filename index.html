@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RoutineRise</title>
+    <link rel="stylesheet" href="Routine.css" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>RoutineRise</h1>
+            <button id="contact-toggle" class="top-toggle" aria-pressed="false" aria-label="Toggle contact">Contact</button>
+            <button id="theme-toggle" class="top-toggle" aria-pressed="false" aria-label="Toggle theme">Switch Theme</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="rise-at-a-glance" aria-labelledby="rise-heading" class="panel">
+            <h2 id="rise-heading">Rise at a Glance</h2>
+            <div id="habit-overview" class="grid">
+                <div class="stat">RoutineRise Progress Pulse: <span id="progress-pulse-value">—</span></div>
+                <div class="stat">RoutineRise Daily Elevation: <span id="daily-elevation-value">—</span></div>
+                <div class="stat">RoutineRise Progress Path: <span id="progress-path-value">—</span></div>
+            </div>
+        </section>
+
+        <section id="filters" class="panel">
+            <label for="category-filter">Category</label>
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="mental">Mental Health</option>
+                <option value="physical">Physical Health</option>
+                <option value="productivity">Productivity</option>
+                <option value="growth">Growth</option>
+            </select>
+        </section>
+
+        <section id="add-goal" class="panel">
+            <h2>Add a Goal</h2>
+            <form id="add-goal-form">
+                <input type="text" id="goal-name" name="goal-name" placeholder="Enter new goal" required />
+                <select id="goal-category">
+                    <option value="mental">Mental Health</option>
+                    <option value="physical">Physical Health</option>
+                    <option value="productivity">Productivity</option>
+                    <option value="growth">Growth</option>
+                </select>
+                <select id="goal-frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <button type="submit">Add Goal</button>
+            </form>
+        </section>
+
+        <section id="edit-goal" class="panel hidden" aria-hidden="true">
+            <h2>Edit Goal</h2>
+            <form id="edit-goal-form">
+                <input type="text" id="edit-goal-name" name="edit-goal-name" placeholder="Edit goal name" required />
+                <select id="edit-goal-category">
+                    <option value="mental">Mental Health</option>
+                    <option value="physical">Physical Health</option>
+                    <option value="productivity">Productivity</option>
+                    <option value="growth">Growth</option>
+                </select>
+                <select id="edit-goal-frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <div class="form-actions">
+                    <button type="submit">Save Changes</button>
+                    <button type="button" id="cancel-edit">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="daily-elevation" class="panel">
+            <h2>Daily Elevation</h2>
+            <form id="daily-elevation-form">
+                <input type="number" id="elevation-amount" name="elevation-amount" placeholder="Enter elevation amount" required />
+                <button type="submit">Add Elevation</button>
+            </form>
+            <div id="elevation-history" class="list"></div>
+        </section>
+
+        <section id="affirmations" class="panel">
+            <h2>Affirmations</h2>
+            <form id="affirmation-form">
+                <select id="affirmation-category">
+                    <option value="motivation">Motivation</option>
+                    <option value="focus">Focus</option>
+                    <option value="resilience">Resilience</option>
+                </select>
+                <button type="submit">Get Affirmation</button>
+            </form>
+            <div id="affirmation-display" class="card"></div>
+        </section>
+
+        <section id="daily-wins" class="panel">
+            <h2>Daily Wins</h2>
+            <form id="daily-wins-form">
+                <label>Did you make any progress today? <input type="text" id="made-progress" /></label>
+                <label>What victory can you celebrate today? <input type="text" id="daily-victory" /></label>
+                <label>What did you check off today? <input type="text" id="daily-checklist" /></label>
+                <button type="submit">Submit Daily Wins</button>
+            </form>
+        </section>
+
+        <section id="Winning-message" class="panel">
+            <h2>RoutineRise message to you</h2>
+            <p>"Every small step you take today builds the future you’re dreaming of. With RoutineRise, you’re not just tracking habits — you’re rising into the strongest, most consistent version of yourself. Show up. Stay steady. Rise daily."</p>
+            <div id="er" class="list"> <!-- habit cards inserted by JS --> </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 RoutineRise — Built by <span class="author-name">Dwight Jones</span></p>
+        </div>
+    </footer>
+
+    <!-- Floating contact card -->
+    <div class="contact-float hidden" aria-hidden="true">
+        <div class="contact-card" role="region" aria-labelledby="contact-heading">
+            <h3 id="contact-heading">Contact</h3>
+            <div class="contact-row"><strong>Dwight Jones</strong></div>
+            <div class="contact-row">📧 <a href="mailto:dwight.routinrise@gmail.com">dwight.routinerise@gmail.com</a></div>
+            <div class="contact-row">🔗 <a href="https://RoutineRise.com" target="_blank" rel="noopener">https://RoutineRise.com</a></div>
+        </div>
+    </div>
+
+    <script src="Routine.js" defer></script>
+</body>
+</html>
+
+
+
+
+
